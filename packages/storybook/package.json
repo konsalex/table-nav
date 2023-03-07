@@ -1,0 +1,26 @@
+{
+  "name": "@cos/storybook",
+  "private": true,
+  "dependencies": {
+    "@cos/table-keynav": "workspace:^"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@storybook/addon-actions": "7.0.0-beta.60",
+    "@storybook/addon-docs": "7.0.0-beta.60",
+    "@storybook/addon-essentials": "7.0.0-beta.60",
+    "@storybook/addon-interactions": "7.0.0-beta.60",
+    "@storybook/addon-links": "7.0.0-beta.60",
+    "@storybook/react": "7.0.0-beta.60",
+    "@storybook/react-vite": "7.0.0-beta.60",
+    "@tanstack/react-table": "^8.7.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "7.0.0-beta.60",
+    "vite": "4.0.4"
+  },
+  "scripts": {
+    "start": "storybook dev -p 6006",
+    "build": "storybook build --quiet -o ./storybook-public"
+  }
+}
