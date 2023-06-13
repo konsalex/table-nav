@@ -2,25 +2,35 @@
   "name": "@cos/storybook",
   "private": true,
   "dependencies": {
-    "@cos/table-keynav": "workspace:^"
+    "@cos/table-keynav": "workspace:^",
+    "@neo4j-ndl/base": "1.4.2",
+    "@neo4j-ndl/react": "1.4.8"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@storybook/addon-actions": "7.0.0-beta.60",
-    "@storybook/addon-docs": "7.0.0-beta.60",
-    "@storybook/addon-essentials": "7.0.0-beta.60",
-    "@storybook/addon-interactions": "7.0.0-beta.60",
-    "@storybook/addon-links": "7.0.0-beta.60",
-    "@storybook/react": "7.0.0-beta.60",
-    "@storybook/react-vite": "7.0.0-beta.60",
-    "@tanstack/react-table": "^8.7.9",
+    "@storybook/addon-actions": "7.0.18",
+    "@storybook/addon-docs": "7.0.18",
+    "@storybook/addon-essentials": "7.0.18",
+    "@storybook/addon-interactions": "7.0.18",
+    "@storybook/addon-links": "7.0.18",
+    "@storybook/react": "7.0.18",
+    "@storybook/react-vite": "7.0.18",
+    "@tanstack/react-table": "8.9.1",
+    "@testing-library/react": "^14.0.0",
+    "concurrently": "^8.1.0",
+    "postcss": "^8.4.24",
     "react": "^18.2.0",
+    "react-aria": "^3.25.0",
     "react-dom": "^18.2.0",
-    "storybook": "7.0.0-beta.60",
+    "react-stately": "^3.23.0",
+    "storybook": "7.0.18",
+    "tailwindcss": "^3.3.2",
     "vite": "4.0.4"
   },
   "scripts": {
-    "start": "storybook dev -p 6006",
-    "build": "storybook build --quiet -o ./storybook-public"
+    "start": "concurrently \"yarn:watch:*\"",
+    "build": "storybook build --quiet -o ./storybook-public",
+    "watch:css": "npx tailwindcss -i ./stories/tailwind.css -o ./stories/output.css --watch",
+    "watch:storybook": "storybook dev -p 6006"
   }
 }

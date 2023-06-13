@@ -1,17 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
-import Code from './assets/code-brackets.svg';
-import Colors from './assets/colors.svg';
-import Comments from './assets/comments.svg';
-import Direction from './assets/direction.svg';
-import Flow from './assets/flow.svg';
-import Plugin from './assets/plugin.svg';
-import Repo from './assets/repo.svg';
-import StackAlt from './assets/stackalt.svg';
-import Button from './assets/button.svg';
-import ButtonTailwind from './assets/button-tailwind.svg';
-import Typography from './assets/typography.svg';
 
-<Meta title="Example/Introduction" />
+<Meta title="Introduction" />
 
 <style>
   {`
@@ -113,6 +102,7 @@ import Typography from './assets/typography.svg';
     .tip-wrapper code {
       font-size: 12px;
       display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
     mark, .tagline {
@@ -122,41 +112,29 @@ import Typography from './assets/typography.svg';
   `}
 </style>
 
-<h1>Welcome to <mark>Building a Complete Design System</mark></h1>
+<h1>Welcome to <mark>table-keynav</mark></h1>
 
-Welcome to <b className="tagline">Building a Complete Design System</b> course 🎉
+This Storybook will serve as an example on how you can turn your tables, or data-grids, keyboard navigable with just a few lines of code.
 
-This Storybook will serve as an example on how to document and develop the React components of a design system library, and illustrate some ways of styling them using CSS-in-JS and Tailwind CSS.
-
-Feel free to navigate, play around with the component controls and the accessibility addon.
+This library is currently <b>v0</b>, and things may change, but looking forward for your feedback, so we can shape this to something helpful for more devs, and enrich accessibility and usability in our tables.
 
 <div className="subheading">Useful Links</div>
 
 <div className="link-list">
   <a className="link-item" href="?path=/story/newline-button--default">
-    <img src={Button} alt="button" />
     <span>
-      <strong>Simple Button</strong>A simple button styled with{' '}
-      <code>styled-components</code>.
+      <strong>Simple navigation</strong>
+      A simple data grid/table imported from Needle, with keyboard navigation.
     </span>
   </a>
   <a className="link-item" href="?path=/story/newline-tailwind-button--default">
-    <img src={ButtonTailwind} alt="tailwind button" />
     <span>
-      <strong>Tailwind CSS</strong>A demo button styled with{' '}
-      <code>Tailwind CSS</code>
-    </span>
-  </a>
-  <a className="link-item" href="?path=/story/newline-typography--typography">
-    <img src={Typography} alt="typography" />
-    <span>
-      <strong>Typography</strong>
-      Design system typography example
+      <strong>Complex table</strong>A more complex table with input form and expandable cells
     </span>
   </a>
 </div>
 
 <div className="tip-wrapper">
-  <span className="tip">Tip</span>Visit the components' source code in{' '}
+  <span className="tip">Tip</span>Visit the stories' source code in{' '}
   <code>packages/storybook/stories</code>
 </div>

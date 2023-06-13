@@ -3,32 +3,24 @@ html {
   font-size: 14px;
 }
 
-table {
-  border: 1px solid lightgray;
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 }
 
-tbody {
-  border-bottom: 1px solid lightgray;
+td:focus,
+td:focus-visible,
+th:focus,
+th:focus-visible {
+  outline: 1px solid blue !important;
+  border-radius: 2px;
+  outline-offset: -1px;
 }
 
-th {
-  border-bottom: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  padding: 2px 4px;
-}
-
-tfoot {
-  color: gray;
-}
-
-tfoot th {
-  font-weight: normal;
-}
-
-td {
-  border: 1px solid #212121;
-}
-
-td:focus {
-  border: 1px solid blue;
+/** Styling patch for needle 🪡 */
+.ndl-table-td:focus-visible {
+  outline: 1px solid blue !important;
+  border-radius: 2px;
+  outline-offset: -1px;
+  z-index: 1;
 }
