@@ -6,16 +6,30 @@
 
 ---
 
-Inspo from AGGrid:
+**tablenav is a headless utility library, that enables accessible keyboard navigation of data rids (aka as tables).**
 
-1. Enter will get you inside the first focusable element inside the cell if any (this is only for the header, not the body)
-2. Enter will get you to the cell below if you are in a body cell
-3. Space in header does nothing
-4. Space in cells triggers a click in clickable elements (checkboxes, buttons, etc)
-5. CMD+C in cell copies the text in the cell, but this is not mine?!
 
-Also GRID by ARIA specs:
+The ARIA specs for data grid navigation can be found here:
 https://w3c.github.io/aria-practices/#grid
+
+**table-nav** consists of:
+* core: Contains all the logic of the library, which is framework-agnostic
+* react: Useful wrappers to work with React projects
+* svelte (soon): Useful wrappers to work with React projects
+
+
+### Installation
+
+```bash
+yarn add @table-nav/core @table-nav/react
+```
+
+### Usage
+
+To use this library
+
+
+
 
 ### Grid Navigation
 
@@ -48,7 +62,7 @@ https://w3c.github.io/aria-practices/#grid
 | <img width="400px"  src="./assets/keys/ArrowLeftUp.png"/>    | If the cell contains multiple widgets, moves focus to the previous widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget. |
 
 
-> The below keystrokes are supported natively by browsers, so this library will not implement any handling
+> The below keystrokes are supported natively by browsers, so they are not implement
 
 - Tab: moves focus to the next widget in the grid. Optionally, the focus movement may wrap inside a single cell or within the grid itself. (As described, there should be no trap focus inside a grid cell).
 - Shift + Tab: moves focus to the previous widget in the grid. Optionally, the focus movement may wrap inside a single cell or within the grid itself.
@@ -59,9 +73,11 @@ https://w3c.github.io/aria-practices/#grid
 
 - [x] : Fix header not working
 - [x] : Add Needle table example
-- [ ] : Add tests
-- [ ] : Fix filtering not working
 - [x] : Create cool logo and keyboard keys
+- [ ] : Add tests
+- [ ] : Create test & release pipeline
+- [ ] : Create React package if possible
+- [ ] : Fix filtering not working
 - [ ] : Add docs
 - [ ] : Add individual hooks to handle granular actions, and leave a generic table hook to handle simple tables. Like `widgetKeydown`?
 - [ ] : Add framework wrappers, for react for example
@@ -69,12 +85,16 @@ https://w3c.github.io/aria-practices/#grid
 ### Known issues 🐝
 
 1. Vertical navigation needs to be a bit smarter: [video](https://share.cleanshot.com/W7QBb0NV)
-2.
+
+
+### Contributions
+
+If you want a feature that is not supported or found a bug that you want to get fixed, fork the repo, and then make a PR with your proposed changes. Still a small project so there are no strict guidelines.
 
 ### Useful links 📚
 
-1. https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/no-noninteractive-element-interactions.md
-2. https://www.w3.org/WAI/ARIA/apg/patterns/grid/
-3. https://www.ag-grid.com/example/
-4. https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
-5. https://github.com/ETSOO/Shared/blob/master/src/Keyboard.ts
+1. https://www.w3.org/WAI/ARIA/apg/patterns/grid/
+2. https://www.ag-grid.com/example/
+3. https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
+4. https://github.com/ETSOO/Shared/blob/master/src/Keyboard.ts
+5. https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/no-noninteractive-element-interactions.md

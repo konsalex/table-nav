@@ -109,3 +109,4 @@ dist
 
 packages/**/lib/
 .yarn/cache
+.idea
