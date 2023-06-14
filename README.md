@@ -4,8 +4,6 @@
 
 <h2 align="center" style="margin-top:-20px">table-keynav</h2>
 
----
-
 **tablenav is a headless utility library, that enables accessible keyboard navigation of data rids (aka as tables).**
 
 
