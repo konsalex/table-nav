@@ -113,3 +113,5 @@ packages/**/lib/
 
 # Avoid exposing NPM token when publishing
 .npmrc
+
+.DS_Store
