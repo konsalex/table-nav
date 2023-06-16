@@ -1,4 +1,4 @@
-name: "Release Needle"
+name: "Release library"
 on:
   # Manually trigger
   workflow_dispatch:
