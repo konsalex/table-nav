@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./lib",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "target": "ES6",
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "lib": [
+      "esnext", "dom"],
+    "module": "ES2020"
+  },
+  "include": ["./src", "./__tests__"]
+}

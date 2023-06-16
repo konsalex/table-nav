@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { libraryHooks } from '@cos/table-keynav/src';
+import { useTableNav } from '@table-nav/react/src';
 import { faker } from '@faker-js/faker';
 import {
   Column,
@@ -174,6 +174,8 @@ export const ExpandingTable = () => {
 
   const [data] = React.useState(() => makeData(100, 5, 3));
 
+  const { listeners } = useTableNav({});
+
   const [expanded, setExpanded] = React.useState<ExpandedState>({});
 
   const table = useReactTable({
@@ -198,10 +200,7 @@ export const ExpandingTable = () => {
   return (
     <div className="p-4">
       <div className="overflow-hidden shadow rounded-md border border-neutral-200 ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-        <table
-          {...libraryHooks}
-          className="min-w-full divide-y divide-gray-300"
-        >
+        <table {...listeners} className="min-w-full divide-y divide-gray-300">
           <thead className="bg-gray-50">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>

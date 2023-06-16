@@ -1,10 +1,10 @@
 {
-  "name": "@cos/storybook",
+  "name": "@table-nav/storybook",
   "private": true,
   "dependencies": {
-    "@cos/table-keynav": "workspace:^",
     "@neo4j-ndl/base": "1.4.2",
-    "@neo4j-ndl/react": "1.4.8"
+    "@neo4j-ndl/react": "1.4.8",
+    "@table-nav/core": "workspace:^"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
@@ -16,8 +16,14 @@
     "@storybook/react": "7.0.18",
     "@storybook/react-vite": "7.0.18",
     "@tanstack/react-table": "8.9.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.2",
     "concurrently": "^8.1.0",
+    "jest": "^29.5.0",
+    "jest-axe": "^6.0.0",
+    "jest-environment-jsdom": "^29.5.0",
     "postcss": "^8.4.24",
     "react": "^18.2.0",
     "react-aria": "^3.25.0",
@@ -25,10 +31,12 @@
     "react-stately": "^3.23.0",
     "storybook": "7.0.18",
     "tailwindcss": "^3.3.2",
-    "vite": "4.0.4"
+    "vite": "4.3.9",
+    "vitest": "^0.32.0"
   },
   "scripts": {
     "start": "concurrently \"yarn:watch:*\"",
+    "test": "vitest run",
     "build": "storybook build --quiet -o ./storybook-public",
     "watch:css": "npx tailwindcss -i ./stories/tailwind.css -o ./stories/output.css --watch",
     "watch:storybook": "storybook dev -p 6006"

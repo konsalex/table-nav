@@ -2,9 +2,9 @@
     <img width="200" src="./assets/logo.png"/>
 </p>
 
-<h2 align="center" style="margin-top:-20px">table-keynav</h2>
+<h2 align="center" style="margin-top:-20px">table-nav</h2>
 
-**tablenav is a headless utility library, that enables accessible keyboard navigation of data rids (aka as tables).**
+**table-nav is a headless utility library, that enables accessible keyboard navigation of data rids (aka as tables).**
 
 
 The ARIA specs for data grid navigation can be found here:
@@ -72,13 +72,15 @@ To use this library
 - [x] : Fix header not working
 - [x] : Add Needle table example
 - [x] : Create cool logo and keyboard keys
+- [X] : Add framework wrappers, for react for example
 - [ ] : Add tests
 - [ ] : Create test & release pipeline
 - [ ] : Create React package if possible
+- [ ] : Release Storybook to GitHub Pages
 - [ ] : Fix filtering not working
-- [ ] : Add docs
 - [ ] : Add individual hooks to handle granular actions, and leave a generic table hook to handle simple tables. Like `widgetKeydown`?
-- [ ] : Add framework wrappers, for react for example
+- [ ] : [React]: allow empty parameters
+- [ ] : Add Axe testing? `jest-axe`
 
 ### Known issues 🐝
 

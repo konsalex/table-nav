@@ -1,0 +1,19 @@
+{
+  "name": "@table-nav/react",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "echo 'No tests in react package'"
+  },
+  "devDependencies": {
+    "@table-nav/core": "workspace:^",
+    "react": "18.2.0",
+    "typescript": "5.1.3"
+  }
+}

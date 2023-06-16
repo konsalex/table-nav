@@ -1,13 +1,20 @@
-import { useRef, useState } from 'react';
+import { DataGridNav } from '@table-nav/core/src';
+import { useTableNav } from '@table-nav/react/src';
+import { useState } from 'react';
 import {
   createColumnHelper,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { Dropdown, Table, TextInput } from '@neo4j-ndl/react';
+import {
+  Button,
+  Dropdown,
+  Table,
+  TextInput,
+  Typography,
+} from '@neo4j-ndl/react';
 import { Meta } from '@storybook/react';
-import { GridKeyNav } from '@cos/table-keynav/src';
 
 export default {
   title: 'Neo4j/Needle Table',
@@ -52,11 +59,12 @@ const ExampleDropdown = [
 const columnHelper = createColumnHelper<TestDataFormat>();
 
 /** Columns (can be defined out of the component to avoid useMemo) */
-const COMMON_COLUMNS = (nav: GridKeyNav) => [
+const COMMON_COLUMNS = (nav: DataGridNav) => [
   columnHelper.accessor('name', {
     header: 'name (editable)',
     cell: (info) => {
       const currentValue = info.getValue();
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const [isFocused, setIsFocused] = useState(false);
       return (
         <TextInput
@@ -77,7 +85,6 @@ const COMMON_COLUMNS = (nav: GridKeyNav) => [
   }),
   columnHelper.accessor('age', {
     cell: (info) => info.getValue(),
-
     minSize: 80,
   }),
   columnHelper.display({
@@ -97,10 +104,12 @@ const COMMON_COLUMNS = (nav: GridKeyNav) => [
             options: ExampleDropdown,
             defaultValue: ExampleDropdown[0],
             onFocus: () => {
+              console.info('Stopping keyboard navigation');
               /** When dropdown is focused stop the keyboard navigation */
               nav.disable();
             },
             onChange: () => {
+              console.info('Starting keyboard navigation');
               /** When an option is selected continue the keyboard navigation */
               nav.enable();
             },
@@ -114,11 +123,16 @@ const COMMON_COLUMNS = (nav: GridKeyNav) => [
 ];
 
 export const NeedleTable = () => {
-  const keynav = useRef(new GridKeyNav({ debug: false }));
   const [rowSelection, setRowSelection] = useState({});
+  const [debug, setDebug] = useState(false);
+
+  const { tableNav, listeners } = useTableNav({
+    debug: debug,
+  });
+
   const table = useReactTable({
     data: data,
-    columns: COMMON_COLUMNS(keynav.current),
+    columns: COMMON_COLUMNS(tableNav),
     initialState: {
       pagination: {
         pageSize: 5,
@@ -134,13 +148,23 @@ export const NeedleTable = () => {
     getPaginationRowModel: getPaginationRowModel(),
   });
   return (
-    <div className="shadow-2xl border border-neutral-200 rounded overflow-hidden">
-      <Table
-        resizable={false}
-        tableProps={table}
-        onKeyUp={() => keynav.current.tableKeyUp()}
-        onKeyDown={(e) => keynav.current.tableKeyDown(e)}
-      />
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <Button
+          className="max-w-max items-baseline"
+          onClick={() => setDebug(!debug)}
+        >
+          {debug ? 'Disable' : 'Enable'} debug logs
+        </Button>
+        {debug && (
+          <Typography className="text-gray-500" variant="body-small">
+            Check dev console
+          </Typography>
+        )}
+      </div>
+      <div className="shadow-2xl border border-neutral-200 rounded overflow-hidden">
+        <Table resizable={false} tableProps={table} {...listeners} />
+      </div>
     </div>
   );
 };

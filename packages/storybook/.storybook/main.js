@@ -29,10 +29,8 @@ export default {
       },
       resolve: {
         alias: {
-          '@cos/table-keynav/src': path.resolve(
-            __dirname,
-            '../../table-keynav/src'
-          ),
+          '@table-nav/core/src': path.resolve(__dirname, '../../core/src'),
+          '@table-nav/react/src': path.resolve(__dirname, '../../react/src'),
         },
       },
     });

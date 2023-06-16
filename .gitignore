@@ -110,3 +110,6 @@ dist
 packages/**/lib/
 .yarn/cache
 .idea
+
+# Avoid exposing NPM token when publishing
+.npmrc

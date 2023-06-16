@@ -1,0 +1,43 @@
+name: "Release Needle"
+on:
+  # Manually trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write # for checkout and tag
+  pull-requests: write # for comments
+  packages: write # for publish
+
+jobs:
+  release-table-nav:
+    name: "Checks"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install packages
+        run: yarn
+      - name: Run tests
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: 'Setting package registry'
+        run: |
+          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Configuring github user, commit changes from CI & publish packages
+        run: |
+          # git config user.name "${{ github.actor }}"
+          # git config user.email "${{ github.actor}}@users.noreply.github.com"
+          # git add .
+          # git diff --quiet && git diff --staged --quiet || git commit -m "ci: release workflow"
+          # Bump versions
+          yarn changeset version
+          echo "Publisingggg"
+          yarn workspaces foreach --no-private --from '@table-nav/*' test
+          git status
