@@ -22,8 +22,7 @@ jobs:
           node-version: 16
       - name: Install packages
         run:
-          npm install -g yarn
-          yarn
+          npm install -g yarn && yarn install
       - name: Run tests
         run: yarn test
       - name: Build
