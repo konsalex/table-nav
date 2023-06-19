@@ -41,5 +41,5 @@
     "watch:css": "npx tailwindcss -i ./stories/tailwind.css -o ./stories/output.css --watch",
     "watch:storybook": "storybook dev -p 6006"
   },
-  "version": "0.0.0"
+  "version": "0.0.1"
 }
