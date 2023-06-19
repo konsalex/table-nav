@@ -5635,6 +5635,8 @@ __metadata:
     "@table-nav/core": "workspace:^"
     react: 18.2.0
     typescript: 5.1.3
+  peerDependencies:
+    "@table-nav/core": "workspace:^"
   languageName: unknown
   linkType: soft
 
