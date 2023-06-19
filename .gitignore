@@ -115,3 +115,4 @@ packages/**/lib/
 .npmrc
 
 .DS_Store
+packages/storybook/storybook-public
