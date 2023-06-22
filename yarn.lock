@@ -5609,6 +5609,7 @@ __metadata:
     "@changesets/cli": ^2.26.1
     "@typescript-eslint/eslint-plugin": ^5.30.5
     "@typescript-eslint/parser": ^5.30.5
+    concurrently: ^8.2.0
     eslint: ^8.42.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-jsx-a11y: ^6.6.0
@@ -5624,11 +5625,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@table-nav/core@workspace:packages/core"
   dependencies:
+    typedoc: ^0.24.8
+    typedoc-plugin-markdown: ^3.15.3
     typescript: 5.1.3
   languageName: unknown
   linkType: soft
 
-"@table-nav/react@workspace:packages/react":
+"@table-nav/react@workspace:^, @table-nav/react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@table-nav/react@workspace:packages/react"
   dependencies:
@@ -5655,6 +5658,7 @@ __metadata:
     "@storybook/react": 7.0.18
     "@storybook/react-vite": 7.0.18
     "@table-nav/core": "workspace:^"
+    "@table-nav/react": "workspace:^"
     "@tanstack/react-table": 8.9.1
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^14.0.0
@@ -6669,6 +6673,13 @@ __metadata:
   version: 6.0.1
   resolution: "ansi-regex@npm:6.0.1"
   checksum: 1ff8b7667cded1de4fa2c9ae283e979fc87036864317da86a2e546725f96406746411d0d85e87a2d12fa5abd715d90006de7fa4fa0477c92321ad3b4c7d4e169
+  languageName: node
+  linkType: hard
+
+"ansi-sequence-parser@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "ansi-sequence-parser@npm:1.1.0"
+  checksum: 75f4d3a4c555655a698aec05b5763cbddcd16ccccdbfd178fb0aa471ab74fdf98e031b875ef26e64be6a95cf970c89238744b26de6e34af97f316d5186b1df53
   languageName: node
   linkType: hard
 
@@ -7918,7 +7929,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^8.1.0":
+"concurrently@npm:^8.1.0, concurrently@npm:^8.2.0":
   version: 8.2.0
   resolution: "concurrently@npm:8.2.0"
   dependencies:
@@ -11976,6 +11987,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lunr@npm:^2.3.9":
+  version: 2.3.9
+  resolution: "lunr@npm:2.3.9"
+  checksum: 176719e24fcce7d3cf1baccce9dd5633cd8bdc1f41ebe6a180112e5ee99d80373fe2454f5d4624d437e5a8319698ca6837b9950566e15d2cae5f2a543a3db4b8
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
@@ -12081,6 +12099,15 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: 0c8c715229044401ea48c2fc26c2554464100074959dafacdd9e4a0e849f0a190b02f39edb373bbdd95e38b8f910074b83b63d08752b8ae6be6ddcfb40ea50a0
+  languageName: node
+  linkType: hard
+
+"marked@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "marked@npm:4.3.0"
+  bin:
+    marked: bin/marked.js
+  checksum: 0db6817893952c3ec710eb9ceafb8468bf5ae38cb0f92b7b083baa13d70b19774674be04db5b817681fa7c5c6a088f61300815e4dd75a59696f4716ad69f6260
   languageName: node
   linkType: hard
 
@@ -12262,7 +12289,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^9.0.1":
+"minimatch@npm:^9.0.0, minimatch@npm:^9.0.1":
   version: 9.0.1
   resolution: "minimatch@npm:9.0.1"
   dependencies:
@@ -14577,6 +14604,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shiki@npm:^0.14.1":
+  version: 0.14.2
+  resolution: "shiki@npm:0.14.2"
+  dependencies:
+    ansi-sequence-parser: ^1.1.0
+    jsonc-parser: ^3.2.0
+    vscode-oniguruma: ^1.7.0
+    vscode-textmate: ^8.0.0
+  checksum: f2a14302b1803617e3ff1b751a5c87b4af4ad15214dc00e9215402e42940a84a0b956cf55d628f25dbf1296b18e277b8529571cd9359b971ac599a0ab11303e7
+  languageName: node
+  linkType: hard
+
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
@@ -15627,6 +15666,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typedoc-plugin-markdown@npm:^3.15.3":
+  version: 3.15.3
+  resolution: "typedoc-plugin-markdown@npm:3.15.3"
+  dependencies:
+    handlebars: ^4.7.7
+  peerDependencies:
+    typedoc: ">=0.24.0"
+  checksum: 845d8907948a7ea9f3eed31d8c2f1a4053569fb763f5c5187d06ecbffd247c6a6e532eaf0ec09d11f09eabbf26a3df8646c96fc3ac1a836cc9af273fa0e53413
+  languageName: node
+  linkType: hard
+
+"typedoc@npm:^0.24.8":
+  version: 0.24.8
+  resolution: "typedoc@npm:0.24.8"
+  dependencies:
+    lunr: ^2.3.9
+    marked: ^4.3.0
+    minimatch: ^9.0.0
+    shiki: ^0.14.1
+  peerDependencies:
+    typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x
+  bin:
+    typedoc: bin/typedoc
+  checksum: a46a14497f789fb3594e6c3af2e45276934ac46df40b7ed15a504ee51dc7a8013a2ffb3a54fd73abca6a2b71f97d3ec9ad356fa9aa81d29743e4645a965a2ae0
+  languageName: node
+  linkType: hard
+
 "typescript@npm:5.1.3, typescript@npm:^5.1.3":
   version: 5.1.3
   resolution: "typescript@npm:5.1.3"
@@ -16078,6 +16144,20 @@ __metadata:
   bin:
     vitest: vitest.mjs
   checksum: a752f7a2290e08cc4033936b1b9e1fe6adcb156bccff6404d4950b4f913c01a8015768f8dbd35267752331311dc55e218d56c5271c56e5ca9c848a36a5dc5b55
+  languageName: node
+  linkType: hard
+
+"vscode-oniguruma@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "vscode-oniguruma@npm:1.7.0"
+  checksum: 53519d91d90593e6fb080260892e87d447e9b200c4964d766772b5053f5699066539d92100f77f1302c91e8fc5d9c772fbe40fe4c90f3d411a96d5a9b1e63f42
+  languageName: node
+  linkType: hard
+
+"vscode-textmate@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "vscode-textmate@npm:8.0.0"
+  checksum: 127780dfea89559d70b8326df6ec344cfd701312dd7f3f591a718693812b7852c30b6715e3cfc8b3200a4e2515b4c96f0843c0eacc0a3020969b5de262c2a4bb
   languageName: node
   linkType: hard
 

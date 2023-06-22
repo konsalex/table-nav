@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "watch": "tsc --watch",
     "test": "echo 'No tests in react package'"
   },
   "devDependencies": {

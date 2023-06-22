@@ -1,9 +1,10 @@
 {
   "name": "@table-nav/core-monorepo",
   "scripts": {
-    "dev": "yarn workspace @table-nav/core start",
+    "dev": "yarn workspace @table-nav/storybook start",
     "test": "yarn workspaces foreach run test",
     "build": "yarn workspaces foreach run build",
+    "watch": "concurrently -n core,react 'yarn workspace @table-nav/core watch' 'yarn workspace @table-nav/react watch'",
     "lint": "eslint --ignore-path .gitignore --quiet --no-error-on-unmatched-pattern packages/**/*{js,jsx,ts,tsx}"
   },
   "private": true,
@@ -14,6 +15,7 @@
     "@changesets/cli": "^2.26.1",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
+    "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsx-a11y": "^6.6.0",

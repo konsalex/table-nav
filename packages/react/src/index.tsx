@@ -1,7 +1,7 @@
 import { KeyboardEvent } from 'react';
 import { DataGridNav, Config } from '@table-nav/core';
 
-export function useTableNav(options: Config) {
+export function useTableNav(options?: Config) {
   const nav = new DataGridNav(options);
 
   return {

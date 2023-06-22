@@ -4,7 +4,8 @@
   "dependencies": {
     "@neo4j-ndl/base": "1.4.2",
     "@neo4j-ndl/react": "1.4.8",
-    "@table-nav/core": "workspace:^"
+    "@table-nav/core": "workspace:^",
+    "@table-nav/react": "workspace:^"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

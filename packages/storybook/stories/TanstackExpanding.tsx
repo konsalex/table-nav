@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { useTableNav } from '@table-nav/react/src';
+import { useTableNav } from '@table-nav/react';
 import { faker } from '@faker-js/faker';
 import {
   Column,
@@ -86,7 +86,7 @@ export const ExpandingTable = () => {
                   <AccessibleCheckbox
                     isSelected={table.getIsAllRowsSelected()}
                     isIndeterminate={table.getIsSomeRowsSelected()}
-                    onChange={table.getToggleAllRowsSelectedHandler()}
+                    onClick={table.getToggleAllRowsSelectedHandler()}
                     aria-label="Select all names"
                   />
                   <AccessibleButton
@@ -174,7 +174,7 @@ export const ExpandingTable = () => {
 
   const [data] = React.useState(() => makeData(100, 5, 3));
 
-  const { listeners } = useTableNav({});
+  const { listeners } = useTableNav({ debug: true });
 
   const [expanded, setExpanded] = React.useState<ExpandedState>({});
 
@@ -326,29 +326,39 @@ function Filter({
   const columnFilterValue = column.getFilterValue();
 
   return (
-    <div tabIndex={-1}>
-      <input
-        type="text"
-        value={(columnFilterValue ?? '') as string}
-        onChange={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          console.log(e);
-          column.setFilterValue(e.target.value);
-        }}
-        placeholder="Search here..."
-        className="block w-3/4 rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-      />
-    </div>
+    <input
+      type="text"
+      value={(columnFilterValue ?? '') as string}
+      onChange={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        column.setFilterValue(e.target.value);
+      }}
+      placeholder="Search here..."
+      className="block w-3/4 rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    />
   );
 }
 
-function AccessibleCheckbox(props: Partial<AriaCheckboxProps>) {
+function AccessibleCheckbox(
+  props: Partial<AriaCheckboxProps> & HTMLProps<HTMLInputElement>
+) {
   const state = useToggleState(props);
   const ref = useRef(null);
   const { inputProps } = useCheckbox(props, state, ref);
 
-  return <input {...inputProps} ref={ref} />;
+  return (
+    <input
+      {...inputProps}
+      // Weird issue with react-aria and tanstack with .checked
+      {...(props.onClick
+        ? {
+            onClick: props.onClick,
+          }
+        : {})}
+      ref={ref}
+    />
+  );
 }
 
 function AccessibleButton(

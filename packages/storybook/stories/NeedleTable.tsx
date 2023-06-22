@@ -1,5 +1,5 @@
-import { DataGridNav } from '@table-nav/core/src';
-import { useTableNav } from '@table-nav/react/src';
+import { DataGridNav } from '@table-nav/core';
+import { useTableNav } from '@table-nav/react';
 import { useState } from 'react';
 import {
   createColumnHelper,
@@ -126,9 +126,7 @@ export const NeedleTable = () => {
   const [rowSelection, setRowSelection] = useState({});
   const [debug, setDebug] = useState(false);
 
-  const { tableNav, listeners } = useTableNav({
-    debug: debug,
-  });
+  const { tableNav, listeners } = useTableNav();
 
   const table = useReactTable({
     data: data,

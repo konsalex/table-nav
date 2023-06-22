@@ -19,6 +19,8 @@ export class DataGridNav {
   private disabled: boolean;
   readonly debug: boolean;
 
+  constructor();
+  constructor(config: Config);
   constructor(config: Config = {}) {
     const { selectors = {}, pageUpDown, debug = false } = config;
     this.selectors = { ...Selectors, ...selectors };
@@ -32,10 +34,18 @@ export class DataGridNav {
     if (this.debug) console.info(`[${functionName}]: ${message}`);
   };
 
+  /**
+   * Disables the keyboard listener in cases
+   * that elements inside the grid need to use
+   * arrows keys etc., like select dropdowns
+   */
   public disable() {
     this.disabled = true;
   }
 
+  /**
+   * Enables the keyboard listeners
+   */
   public enable() {
     this.disabled = false;
   }
@@ -44,6 +54,7 @@ export class DataGridNav {
     return el instanceof HTMLElement || el instanceof SVGElement;
   }
 
+  /** Used as a keyboard listener for key up */
   public tableKeyUp() {
     // TODO: have a cleanup as user can press key
     //  and then move to another tab, and get back to the same tab
@@ -51,6 +62,7 @@ export class DataGridNav {
     this.keys = [];
   }
 
+  /** Used as a keyboard listener for key down */
   public tableKeyDown(e: KeyboardEvent) {
     this.debugLog('tableKeyDown', `Key pressed: ${e.key}`);
     if (this.disabled) {
@@ -67,8 +79,13 @@ export class DataGridNav {
      * Cannot work with preventDefault as it will
      * first capture the event from an input in cell for example
      */
-    if (e.key !== 'Tab' && e.key !== 'Shift') {
-      // e.preventDefault();
+    if (
+      Keys.ArrowDown === e.key ||
+      Keys.ArrowUp === e.key ||
+      Keys.ArrowLeft === e.key ||
+      Keys.ArrowRight === e.key
+    ) {
+      e.preventDefault();
     }
 
     /**
@@ -102,6 +119,9 @@ export class DataGridNav {
     }
   }
 
+  /**
+   * Handles the navigation inside a cell
+   */
   public cellNavigation(e: KeyboardEvent) {
     if (!(e.target instanceof Element)) return;
 
@@ -131,6 +151,7 @@ export class DataGridNav {
       const focusableWidgets = [
         ...cell.querySelectorAll(this.selectors.Focusable),
       ];
+      console.log(focusableWidgets);
 
       const widgetIdx = focusableWidgets.findIndex((el) => el === e.target);
 
@@ -173,6 +194,10 @@ export class DataGridNav {
     }
   }
 
+  /**
+   * Handles the navigation outside a cell
+   * on the grid level
+   */
   public gridNavigation(e: KeyboardEvent) {
     const { target } = e;
     if (!(e.target instanceof Element)) return;

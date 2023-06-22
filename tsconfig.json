@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "paths": {
-      "@table-nav/*": ["packages/*/lib"]
+      "@table-nav/*": ["packages/*/lib"],
     }
   },
   "exclude": ["node_modules", "**/*.test.*"]
