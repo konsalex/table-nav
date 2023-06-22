@@ -1,5 +1,11 @@
 # @table-nav/core
 
+## 0.0.3
+
+### Patch Changes
+
+- 59f13c7: constructor overloading, typedoc for `core` package, comments in methods, watch scripts and more
+
 ## 0.0.2
 
 ### Patch Changes
