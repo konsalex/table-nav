@@ -10,12 +10,9 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "echo 'No tests in core package'",
-    "docs": "typedoc --plugin typedoc-plugin-markdown --excludePrivate --out docs ./src/index.ts"
+    "test": "echo 'No tests in core package'"
   },
   "devDependencies": {
-    "typedoc": "^0.24.8",
-    "typedoc-plugin-markdown": "^3.15.3",
     "typescript": "5.1.3"
   }
 }

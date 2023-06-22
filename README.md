@@ -11,9 +11,9 @@ The ARIA specs for data grid navigation can be found here:
 https://w3c.github.io/aria-practices/#grid
 
 **table-nav** consists of:
-* core: Contains all the logic of the library, which is framework-agnostic
-* react: Useful wrappers to work with React projects
-* svelte (soon): Useful wrappers to work with React projects
+* `core`: Contains all the logic of the library, which is framework-agnostic
+* `react`: Useful wrappers to work with React projects
+* `svelte` (soon): Useful wrappers to work with React projects
 
 
 ### Installation
@@ -33,17 +33,17 @@ To use this library
 
 | Key                                                       | Description                                                                                                                                                                                                                           |
 |-----------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img width="400px"  src="./assets/keys/ArrowRight.png"/>  | Moves focus one cell to the right. If focus is on the right-most cell in the row, focus does not move.                                                                                                                                |
-| <img width="400px"  src="./assets/keys/ArrowLeft.png"/>   | Moves focus one cell to the left. If focus is on the left-most cell in the row, focus does not move.                                                                                                                                  |
-| <img width="400px"  src="./assets/keys/ArrowUp.png"/>     | Moves focus one cell up. If focus is on the top cell in the column, focus does not move.                                                                                                                                              |
-| <img width="400px"  src="./assets/keys/ArrowDown.png"/>   | Moves focus one cell down. If focus is on the bottom cell in the column, focus does not move.                                                                                                                                         |
-| <img width="400px"  src="./assets/keys/PageDown.png"/>    | Moves focus down an author-determined number of rows, typically scrolling so the bottom row in the currently visible set of rows becomes one of the first visible rows. If focus is in the last row of the grid, focus does not move. |
-| <img width="400px"  src="./assets/keys/PageUp.png"/>      | Moves focus up an author-determined number of rows, typically scrolling so the top row in the currently visible set of rows becomes one of the last visible rows. If focus is in the first row of the grid, focus does not move.      |
-| <img width="400px"  src="./assets/keys/Home.png"/>        | Moves focus to the first cell in the row that contains focus.                                                                                                                                                                         |
-| <img width="400px"   src="./assets/keys/End.png"/>        | Moves focus to the last cell in the row that contains focus.                                                                                                                                                                          |
-| <img width="400px"  src="./assets/keys/ControlHome.png"/> | Moves focus to the first cell in the first row.                                                                                                                                                                                       |
-| <img width="400px"   src="./assets/keys/ControlEnd.png"/> | Moves focus to the first cell in the last row.                                                                                                                                                                                        |
-| <img width="400px"   src="./assets/keys/Enter.png"/>      | Disables grid navigation and focuses on the first focusable element in the cell. If there are no focusable elements in the cell.                                                                                                      |
+| <img width="130px"  src="./assets/keys/ArrowRight.png"/>  | Moves focus one cell to the right. If focus is on the right-most cell in the row, focus does not move.                                                                                                                                |
+| <img width="130px"  src="./assets/keys/ArrowLeft.png"/>   | Moves focus one cell to the left. If focus is on the left-most cell in the row, focus does not move.                                                                                                                                  |
+| <img width="130px"  src="./assets/keys/ArrowUp.png"/>     | Moves focus one cell up. If focus is on the top cell in the column, focus does not move.                                                                                                                                              |
+| <img width="130px"  src="./assets/keys/ArrowDown.png"/>   | Moves focus one cell down. If focus is on the bottom cell in the column, focus does not move.                                                                                                                                         |
+| <img width="130px"  src="./assets/keys/PageDown.png"/>    | Moves focus down an author-determined number of rows, typically scrolling so the bottom row in the currently visible set of rows becomes one of the first visible rows. If focus is in the last row of the grid, focus does not move. |
+| <img width="130px"  src="./assets/keys/PageUp.png"/>      | Moves focus up an author-determined number of rows, typically scrolling so the top row in the currently visible set of rows becomes one of the last visible rows. If focus is in the first row of the grid, focus does not move.      |
+| <img width="130px"  src="./assets/keys/Home.png"/>        | Moves focus to the first cell in the row that contains focus.                                                                                                                                                                         |
+| <img width="130px"   src="./assets/keys/End.png"/>        | Moves focus to the last cell in the row that contains focus.                                                                                                                                                                          |
+| <img width="130px"  src="./assets/keys/ControlHome.png"/> | Moves focus to the first cell in the first row.                                                                                                                                                                                       |
+| <img width="130px"   src="./assets/keys/ControlEnd.png"/> | Moves focus to the first cell in the last row.                                                                                                                                                                                        |
+| <img width="130px"   src="./assets/keys/Enter.png"/>      | Disables grid navigation and focuses on the first focusable element in the cell. If there are no focusable elements in the cell.                                                                                                      |
 
 
 
@@ -55,36 +55,22 @@ To use this library
 
 | Key                                                          | Description                                                                                                                                                                                                               |
 |--------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img width="400px"   src="./assets/keys/Escape.png"/>        | Restores grid navigation.                                                                                                                                                                                                 |
-| <img width="400px"  src="./assets/keys/ArrowRightDown.png"/> | If the cell contains multiple widgets, moves focus to the next widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget.     |
-| <img width="400px"  src="./assets/keys/ArrowLeftUp.png"/>    | If the cell contains multiple widgets, moves focus to the previous widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget. |
+| <img width="130px"   src="./assets/keys/Escape.png"/>        | Restores grid navigation.                                                                                                                                                                                                 |
+| <img width="130px"  src="./assets/keys/ArrowRightDown.png"/> | If the cell contains multiple widgets, moves focus to the next widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget.     |
+| <img width="130px"  src="./assets/keys/ArrowLeftUp.png"/>    | If the cell contains multiple widgets, moves focus to the previous widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget. |
 
 
 > The below keystrokes are supported natively by browsers, so they are not implement
 
-- Tab: moves focus to the next widget in the grid. Optionally, the focus movement may wrap inside a single cell or within the grid itself. (As described, there should be no trap focus inside a grid cell).
-- Shift + Tab: moves focus to the previous widget in the grid. Optionally, the focus movement may wrap inside a single cell or within the grid itself.
+- `Tab`: moves focus to the next widget in the grid. Optionally, the focus movement may wrap inside a single cell or within the grid itself. (As described, there should be no trap focus inside a grid cell).
+- `Shift + Tab`: moves focus to the previous widget in the grid. Optionally, the focus movement may wrap inside a single cell or within the grid itself.
 
 ---
-
-### TODO
-
-- [x] : Fix header not working
-- [x] : Add Needle table example
-- [x] : Create cool logo and keyboard keys
-- [X] : Add framework wrappers, for react for example
-- [ ] : Add tests
-- [ ] : Create test & release pipeline
-- [ ] : Create React package if possible
-- [ ] : Release Storybook to GitHub Pages
-- [ ] : Fix filtering not working
-- [ ] : Add individual hooks to handle granular actions, and leave a generic table hook to handle simple tables. Like `widgetKeydown`?
-- [ ] : [React]: allow empty parameters
-- [ ] : Add Axe testing? `jest-axe`
 
 ### Known issues 🐝
 
 1. Vertical navigation needs to be a bit smarter: [video](https://share.cleanshot.com/W7QBb0NV)
+2. WTF (what the focus) should happen in cell navigation, when you stumble an input? [Related issue](https://github.com/elastic/eui/issues/3334#issuecomment-616603058)
 
 
 ### Contributions
