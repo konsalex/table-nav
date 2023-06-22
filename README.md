@@ -4,7 +4,7 @@
 
 <h2 align="center" style="margin-top:-20px">table-nav</h2>
 
-**table-nav is a headless utility library, that enables accessible keyboard navigation of data rids (aka as tables).**
+**table-nav is a headless utility library, that enables accessible keyboard navigation of data grids (aka tables).**
 
 
 The ARIA specs for data grid navigation can be found here:
