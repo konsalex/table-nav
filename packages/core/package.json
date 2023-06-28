@@ -3,16 +3,25 @@
   "version": "0.0.3",
   "license": "MIT",
   "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
   "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
+    "build": "tsup --dts",
+    "watch": "tsup --watch --dts",
     "test": "echo 'No tests in core package'"
   },
   "devDependencies": {
+    "tsup": "^7.1.0",
     "typescript": "5.1.3"
   }
 }

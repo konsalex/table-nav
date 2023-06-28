@@ -151,7 +151,6 @@ export class DataGridNav {
       const focusableWidgets = [
         ...cell.querySelectorAll(this.selectors.Focusable),
       ];
-      console.log(focusableWidgets);
 
       const widgetIdx = focusableWidgets.findIndex((el) => el === e.target);
 
@@ -212,7 +211,10 @@ export class DataGridNav {
       if (e.key === Keys.Enter) {
         const cell = e.target.querySelector(this.selectors.Focusable);
         if (cell && this.isFocusable(cell)) {
+          // Enter can trigger child elements:
+          // Source: https://www.reddit.com/r/learnjavascript/comments/14kpj24/wrong_keydown_listener_is_called_with_focus/
           cell.focus();
+          e.preventDefault();
         }
       }
 
