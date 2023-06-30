@@ -5,10 +5,12 @@ type FocusableElement = HTMLElement | SVGElement;
 
 export type Config =
   | {
+      /** Enable debug logs */
+      debug?: boolean;
+      /** CSS Selectors being used to find Rows, Row Groups, Cells and Focusable elements */
       selectors?: Partial<typeof Selectors>;
       /** How many rows to move when pressing page up/down - Default goes to first/last row */
       pageUpDown?: number;
-      debug?: boolean;
     }
   | undefined;
 
@@ -140,6 +142,9 @@ export class DataGridNav {
     /**
      * Keys: ArrowRight, ArrowDown
      * Move to the next focusable cell, or the first one
+     *
+     * Arrow Down disabled:
+     * https://github.com/w3c/aria-practices/issues/2739#issuecomment-1613538972
      */
     if (e.key === Keys.ArrowRight || e.key === Keys.ArrowDown) {
       const cell = e.target.closest(this.selectors.Cell);
@@ -167,6 +172,9 @@ export class DataGridNav {
     /**
      * Keys: ArrowLeft, ArrowUp
      * Move to the previous focusable cell, or the last one
+     *
+     * Arrow Up disabled:
+     * https://github.com/w3c/aria-practices/issues/2739#issuecomment-1613538972
      */
     if (e.key === Keys.ArrowLeft || e.key === Keys.ArrowUp) {
       const cell = e.target.closest(this.selectors.Cell);
@@ -213,6 +221,7 @@ export class DataGridNav {
         if (cell && this.isFocusable(cell)) {
           // Enter can trigger child elements:
           // Source: https://www.reddit.com/r/learnjavascript/comments/14kpj24/wrong_keydown_listener_is_called_with_focus/
+          // If the e.preventDefault causes issues, we can offset the execution with setTimeout
           cell.focus();
           e.preventDefault();
         }

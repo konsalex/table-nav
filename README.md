@@ -6,7 +6,6 @@
 
 **table-nav is a headless utility library, that enables accessible keyboard navigation of data grids (aka tables).**
 
-
 The ARIA specs for data grid navigation can be found here:
 
 <a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/"><img src="./assets/w3c.png" height="auto" width="80"></a>
@@ -14,7 +13,7 @@ The ARIA specs for data grid navigation can be found here:
 **table-nav** consists of:
 * `core`: Contains all the logic of the library, which is framework-agnostic
 * `react`: Useful wrappers to work with React projects
-* `svelte` (soon): Useful wrappers to work with Svelte projects
+* `svelte` (soon): Useful wrappers to work with Svelte projects. [Example link](https://codesandbox.io/p/sandbox/interesting-cdn-7krjys?embed=1&file=%2Fsrc%2FApp.svelte%3A140%2C20)
 
 
 ### Installation
@@ -25,10 +24,48 @@ yarn add @table-nav/core @table-nav/react
 
 ### Usage
 
-To use this library
+To use this library you can either use directly the `core` package or the `react` package.
+
+#### Core
+
+Below is an example on how you can use the `core` package in a simple HTML table.
+This package is framework-agnostic, and you can find an example integration with [Svelte here](https://codesandbox.io/p/sandbox/interesting-cdn-7krjys?embed=1&file=%2Fsrc%2FApp.svelte%3A132%2C31-132%2C43).
+
+```js
+// DataGridNav is the main class of the library
+import { DataGridNav } from "@table-nav/core";
+
+// Create a new instance of the class
+const dataGridNav = new DataGridNav({
+  // Library is written in TS and all the options will be recommended inside your IDE
+  debug: true,
+});
+
+// Use the function provided by the library to handle the keydown/up events
+table.addEventListener("keydown", dataGridNav.tableKeyDown);
+table.addEventListener("keyup", dataGridNav.tableKeyUp); // This is neccessery to allow more than 1 key shortcuts
+```
+
+#### React
+
+For projects using react, `@table-nav/react` provides a useful hook to work with.
 
 
+```jsx
+// Import hook from "@table-nav/react"
+import { useTableNav } from '@table-nav/react';
 
+// Inside your HOC component
+const { tableNav, listeners } = useTableNav();
+
+<YourTable {...listeners} />
+```
+
+`useTableNav` returns an object with 2 properties:
+* `tableNav`: An instance of the `DataGridNav` class. Useful for programmatic navigation, and enabling/disabling the functionality for use-cases, like widget focus inside cell.
+* `listeners`: An object with the `onKeyDown` and `onKeyUp` listeners, that you can spread inside your table element.
+
+All the examples inside [`packages/storybook`](https://github.com/konsalex/table-nav/tree/main/packages/storybook/stories) are with `@table-nav/react`, so feel free to take a look how they work.
 
 ### Grid Navigation
 
@@ -54,11 +91,11 @@ To use this library
 > WTF (What the focus) is going on. There is no standardised way to know what is actually focusable in the web.
 > To comply with this lib and work properly, you need to add a `tabindex` attribute explicitly to the elements you want to be focusable, inside a cell, except for `input` and `textarea` elements.
 
-| Key                                                          | Description                                                                                                                                                                                                               |
-|--------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img width="200px"   src="./assets/keys/Escape.png"/>        | Restores grid navigation.                                                                                                                                                                                                 |
-| <img width="200px"  src="./assets/keys/ArrowRightDown.png"/> | If the cell contains multiple widgets, moves focus to the next widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget.     |
-| <img width="200px"  src="./assets/keys/ArrowLeftUp.png"/>    | If the cell contains multiple widgets, moves focus to the previous widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget. |
+| Key                                                          | Description                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img width="200px"   src="./assets/keys/Escape.png"/>        | Restores grid navigation.                                                                                                                                                                                                                                                                                                                    |
+| <img width="200px"  src="./assets/keys/ArrowRightDown.png"/> | If the cell contains multiple widgets, moves focus to the next widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget.<br/>`Arrow Down` is disabled [issue](https://github.com/w3c/aria-practices/issues/2739#issuecomment-1613538972)        |
+| <img width="200px"  src="./assets/keys/ArrowLeftUp.png"/>    | If the cell contains multiple widgets, moves focus to the previous widget inside the cell, optionally wrapping to the first widget if focus is on the last widget. Otherwise, passes the key event to the focused widget.     <br/>`Arrow Up` is disabled [issue](https://github.com/w3c/aria-practices/issues/2739#issuecomment-1613538972) |
 
 
 > The below keystrokes are supported natively by browsers, so they are not implement
@@ -76,7 +113,7 @@ To use this library
 
 ### Contributions
 
-If you want a feature that is not supported or found a bug that you want to get fixed, fork the repo, and then make a PR with your proposed changes. Still a small project so there are no strict guidelines.
+If you want a feature that is not supported or found a bug that you want to fix, fork the repo, and then make a PR with your proposed changes. Still a small project so there are no strict guidelines.
 
 ### Useful links 📚
 

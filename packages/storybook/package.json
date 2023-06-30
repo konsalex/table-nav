@@ -1,5 +1,6 @@
 {
   "name": "@table-nav/storybook",
+  "homepage": "https://konsalex.github.io/table-nav",
   "private": true,
   "dependencies": {
     "@neo4j-ndl/base": "1.4.2",
@@ -22,6 +23,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.2",
     "concurrently": "^8.1.0",
+    "gh-pages": "^5.0.0",
     "jest": "^29.5.0",
     "jest-axe": "^6.0.0",
     "jest-environment-jsdom": "^29.5.0",
@@ -40,7 +42,8 @@
     "test": "vitest run",
     "build": "storybook build --quiet -o ./storybook-public",
     "watch:css": "npx tailwindcss -i ./stories/tailwind.css -o ./stories/output.css --watch",
-    "watch:storybook": "storybook dev -p 6006"
+    "watch:storybook": "storybook dev -p 6006",
+    "deploy": "gh-pages -d storybook-public"
   },
   "version": "0.0.3"
 }
