@@ -10,6 +10,8 @@ The ARIA specs for data grid navigation can be found here:
 
 <a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/"><img src="./assets/w3c.png" height="auto" width="80"></a>
 
+<img src="./assets/demo.gif" />
+
 **table-nav** consists of:
 * `core`: Contains all the logic of the library, which is framework-agnostic
 * `react`: Useful wrappers to work with React projects
