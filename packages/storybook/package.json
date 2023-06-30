@@ -45,5 +45,5 @@
     "watch:storybook": "storybook dev -p 6006",
     "deploy": "touch ./storybook-public/.nojekyll && gh-pages -d ./storybook-public -t true"
   },
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
