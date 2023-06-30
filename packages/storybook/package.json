@@ -43,7 +43,7 @@
     "build": "storybook build --quiet -o ./storybook-public",
     "watch:css": "npx tailwindcss -i ./stories/tailwind.css -o ./stories/output.css --watch",
     "watch:storybook": "storybook dev -p 6006",
-    "deploy": "gh-pages -d storybook-public"
+    "deploy": "touch ./storybook-public/.nojekyll && gh-pages -d ./storybook-public -t true"
   },
   "version": "0.0.3"
 }
