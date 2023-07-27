@@ -1,5 +1,11 @@
 # @table-nav/core
 
+## 0.0.6
+
+### Patch Changes
+
+- 616b3fd: disable some arrow actions in cell navigation
+
 ## 0.0.4
 
 ### Patch Changes
