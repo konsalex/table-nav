@@ -2,6 +2,11 @@
   "name": "@table-nav/react",
   "version": "0.0.6",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/konsalex/table-nav",
+    "directory": "packages/react"
+  },
   "main": "./lib/index.js",
   "module": "./lib/index.mjs",
   "types": "./lib/index.d.ts",
