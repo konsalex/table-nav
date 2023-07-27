@@ -45,6 +45,8 @@ jobs:
           # Get root README.md to the packages, to be visible in npm page
           cp README.md packages/react/README.md
           cp README.md packages/core/README.md
+          cp -r assets/ packages/react/assets/
+          cp -r assets/ packages/core/assets/
           git add . && git commit -m "ci: releasing new version"
           yarn workspaces foreach --no-private --from '@table-nav/*' npm publish --access public
           yarn changeset tag

@@ -3,8 +3,8 @@
   "homepage": "https://konsalex.github.io/table-nav",
   "private": true,
   "dependencies": {
-    "@neo4j-ndl/base": "1.4.2",
-    "@neo4j-ndl/react": "1.4.8",
+    "@neo4j-ndl/base": "1.9.0",
+    "@neo4j-ndl/react": "1.9.0",
     "@table-nav/core": "workspace:^",
     "@table-nav/react": "workspace:^"
   },

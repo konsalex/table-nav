@@ -72,8 +72,12 @@ const COMMON_COLUMNS = (nav: DataGridNav) => [
           size="extra-small"
           data-testid={`text-input-${info.cell.id}`}
           readOnly={!isFocused}
-          onFocus={() => setIsFocused(true)}
+          onFocus={() => {
+            nav.disable();
+            setIsFocused(true);
+          }}
           onBlur={() => {
+            nav.enable();
             setIsFocused(false);
           }}
           onChange={() => console.log('Changing')}
@@ -161,7 +165,12 @@ export const NeedleTable = () => {
         )}
       </div>
       <div className="shadow-2xl border border-neutral-200 rounded overflow-hidden">
-        <Table resizable={false} tableProps={table} {...listeners} />
+        <Table
+          focusableCells
+          resizable={false}
+          tableProps={table}
+          {...listeners}
+        />
       </div>
     </div>
   );

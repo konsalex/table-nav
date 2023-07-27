@@ -16,11 +16,3 @@ th:focus-visible {
   border-radius: 2px;
   outline-offset: -1px;
 }
-
-/** Styling patch for needle 🪡 */
-.ndl-table-td:focus-visible {
-  outline: 1px solid blue !important;
-  border-radius: 2px;
-  outline-offset: -1px;
-  z-index: 1;
-}
