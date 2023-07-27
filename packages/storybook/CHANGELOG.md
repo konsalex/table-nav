@@ -1,5 +1,13 @@
 # @table-nav/storybook
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [5b271ee]
+  - @table-nav/core@0.0.7
+  - @table-nav/react@0.0.7
+
 ## 0.0.4
 
 ### Patch Changes

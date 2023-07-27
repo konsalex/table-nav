@@ -1,5 +1,13 @@
 # @table-nav/react
 
+## 0.0.7
+
+### Patch Changes
+
+- 5b271ee: trigger empty release to update docs
+- Updated dependencies [5b271ee]
+  - @table-nav/core@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes
