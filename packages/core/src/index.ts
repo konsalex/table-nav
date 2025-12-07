@@ -56,6 +56,15 @@ export class DataGridNav {
     return el instanceof HTMLElement || el instanceof SVGElement;
   }
 
+  private isArrowKey(key: string): boolean {
+    return (
+      key === Keys.ArrowUp ||
+      key === Keys.ArrowDown ||
+      key === Keys.ArrowLeft ||
+      key === Keys.ArrowRight
+    );
+  }
+
   /** Used as a keyboard listener for key up */
   public tableKeyUp() {
     // TODO: have a cleanup as user can press key
@@ -210,7 +219,13 @@ export class DataGridNav {
     if (!(e.target instanceof Element)) return;
     if (!(target instanceof Element)) return;
 
-    if (this.keys.length === 1) {
+    // During rapid navigation, users may press the next arrow key
+    // before releasing the previous one. This ensures navigation
+    // still works when multiple arrow keys are held.
+    const isArrowCombo =
+      this.keys.length >= 2 && this.keys.every((key) => this.isArrowKey(key));
+
+    if (this.keys.length === 1 || isArrowCombo) {
       /**
        * Keys: Enter
        * Should move focus inside the cell to the first focusable element:

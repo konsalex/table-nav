@@ -123,4 +123,27 @@ describe('<Needle table />', () => {
     /** Expect first cell in the table, top left, to have focus */
     expect(firstCell).toHaveFocus();
   });
+
+  test('Rapid arrow key navigation - pressing next arrow before releasing previous', async () => {
+    const { container } = render(<NeedleTable />);
+
+    /**
+     * Click and focus to first cell of first
+     * row and then start keyboard navigation
+     */
+    const firstCell = getFirstCell(container);
+    await userEvent.click(firstCell);
+
+    /**
+     * Simulate rapid navigation where user presses ArrowRight
+     * while still holding ArrowDown (common during fast navigation)
+     */
+    await userEvent.keyboard('{ArrowDown>}{ArrowRight}{/ArrowDown}');
+
+    /** Should have moved down one row and right one cell */
+    const body = container.querySelectorAll('[role="rowgroup"]')[1];
+    const secondRow = body.querySelectorAll('[role="row"]')[1];
+    const secondCell = secondRow.querySelectorAll('[role="cell"]')[1];
+    expect(secondCell).toHaveFocus();
+  });
 });
