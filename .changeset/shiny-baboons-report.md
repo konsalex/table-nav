@@ -1,6 +1,6 @@
 ---
-'@table-nav/core': minor
-'@table-nav/react': minor
+'@table-nav/core': patch
+'@table-nav/react': patch
 ---
 
-fix rapis arrow navigation handling
+fix rapid arrow navigation handling
