@@ -7,6 +7,7 @@ permissions:
   contents: write # for checkout and tag
   pull-requests: write # for comments
   packages: write # for publish
+  id-token: write # for auth to npm using OIDC
 
 jobs:
   release-table-nav:
@@ -22,18 +23,11 @@ jobs:
         with:
           node-version: 16
       - name: Install packages
-        run:
-          npm install -g yarn && yarn install
+        run: npm install -g yarn && yarn install
       - name: Build
         run: yarn build
       - name: Run tests
         run: yarn test
-      - name: 'Setting package registry'
-        run: |
-          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-          yarn config set "npmAuthToken" ${NPM_TOKEN}
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Configuring github user, commit changes from CI & publish packages
         run: |
           # Avoid exposing `.yarnrc.yml` file
@@ -48,10 +42,9 @@ jobs:
           cp README.md packages/react/README.md
           cp README.md packages/core/README.md
           git add . && git commit -m "ci: releasing new version"
-          yarn workspaces foreach --no-private --from '@table-nav/*' npm publish --access public
+          yarn workspaces foreach --no-private --from '@table-nav/*' npm publish --access public --provenance
           yarn changeset tag
           # End of Patch
           git push --follow-tags
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
