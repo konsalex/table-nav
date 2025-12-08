@@ -42,7 +42,8 @@ jobs:
           cp README.md packages/react/README.md
           cp README.md packages/core/README.md
           git add . && git commit -m "ci: releasing new version"
-          yarn workspaces foreach --no-private --from '@table-nav/*' npm publish --access public -- --provenance
+          cd packages/core && npm publish --access public --provenance
+          cd packages/react && npm publish --access public --provenance
           yarn changeset tag
           # End of Patch
           git push --follow-tags
