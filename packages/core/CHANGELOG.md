@@ -1,5 +1,11 @@
 # @table-nav/core
 
+## 0.0.8
+
+### Patch Changes
+
+- 79c91ba: fix rapid arrow navigation handling
+
 ## 0.0.7
 
 ### Patch Changes

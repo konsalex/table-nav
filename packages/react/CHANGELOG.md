@@ -1,5 +1,13 @@
 # @table-nav/react
 
+## 0.0.8
+
+### Patch Changes
+
+- 79c91ba: fix rapid arrow navigation handling
+- Updated dependencies [79c91ba]
+  - @table-nav/core@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes
