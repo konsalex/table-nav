@@ -1,5 +1,11 @@
 # @table-nav/core
 
+## 0.0.9
+
+### Patch Changes
+
+- 044643a: bump broken workspace reference
+
 ## 0.0.8
 
 ### Patch Changes
