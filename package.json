@@ -2,8 +2,8 @@
   "name": "@table-nav/core-monorepo",
   "scripts": {
     "dev": "yarn workspace @table-nav/storybook start",
-    "test": "yarn workspaces foreach run test",
-    "build": "yarn workspaces foreach run build",
+    "test": "yarn workspaces foreach --all run test",
+    "build": "yarn workspaces foreach --all run build",
     "watch": "concurrently -n core,react 'yarn workspace @table-nav/core watch' 'yarn workspace @table-nav/react watch'",
     "lint": "eslint --ignore-path .gitignore --quiet --no-error-on-unmatched-pattern packages/**/*{js,jsx,ts,tsx}"
   },
