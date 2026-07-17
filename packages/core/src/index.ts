@@ -66,15 +66,15 @@ export class DataGridNav {
   }
 
   /** Used as a keyboard listener for key up */
-  public tableKeyUp() {
+  public tableKeyUp = () => {
     // TODO: have a cleanup as user can press key
     //  and then move to another tab, and get back to the same tab
     // so this will not be empty (the bug exists with .pop)
     this.keys = [];
-  }
+  };
 
   /** Used as a keyboard listener for key down */
-  public tableKeyDown(e: KeyboardEvent) {
+  public tableKeyDown = (e: KeyboardEvent) => {
     this.debugLog('tableKeyDown', `Key pressed: ${e.key}`);
     if (this.disabled) {
       this.debugLog('tableKeyDown', 'interaction is disabled');
@@ -128,7 +128,7 @@ export class DataGridNav {
       this.debugLog('tableKeyDown', 'event captured in cell');
       this.gridNavigation(e);
     }
-  }
+  };
 
   /**
    * Handles the navigation inside a cell
