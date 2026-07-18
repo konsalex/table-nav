@@ -1,5 +1,11 @@
 # @table-nav/core
 
+## 0.0.10
+
+### Patch Changes
+
+- 32d3d0e: fix(core): bind keyboard listeners so they work when passed by reference
+
 ## 0.0.9
 
 ### Patch Changes
